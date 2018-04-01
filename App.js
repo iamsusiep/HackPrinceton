@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, AppRegistry, StyleSheet, Text, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
-
 const{width, height} = Dimensions.get('window')
 const SCREEN_HEIGHT = height
 const SCREEN_WIDTH = width
@@ -10,6 +9,9 @@ const LATITUDE_DELTA = 0.0922
 const LONGITUDE_DELTA = LATITUDE_DELTA* ASPECT_RATIO
 
 export default class App extends React.Component {
+
+  componentWillMount(){
+  }
   constructor(props){
     super(props);
 
@@ -33,7 +35,7 @@ export default class App extends React.Component {
         longitude:0
       },
       markers:arrayMarkers
-    };
+    }
   }
   watchID: ?number = null
 
@@ -114,7 +116,12 @@ export default class App extends React.Component {
         region = {this.state.initialPosition}
         onPress = {this.onPress.bind(this)}
         >
-        {this.renderMarkers()}
+        <MapView.Marker
+          coordinate={this.state.markerPosition}
+          title ={'your location'}
+          >
+          </MapView.Marker>
+          {this.renderMarkers()}
         </MapView>
       </View>
     );
