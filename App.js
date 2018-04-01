@@ -99,8 +99,9 @@ export default class App extends React.Component {
         <MapView.Marker
         key={marker.longitude}
         coordinate={marker}
-        title={'My marker title'}
-        description={'my marker descirption'}
+        image={require('./pin.png')}
+        title={'Recycle Bin'}
+        description={'Latitude: '+ Number((marker.latitude).toFixed(1)) + ' Longitude: ' + Number((marker.longitude).toFixed(1))}
         />
       )
     }
@@ -133,6 +134,12 @@ const styles = StyleSheet.create({
     left:0,
     bottom: 0,
     right:0,
-    height:230
+    height:400
+  },
+  image: {
+    flex: 1,
+    width: 30,
+    height:30,
+    resizeMode: 'contain'
   }
 });
